@@ -1,0 +1,7 @@
+Hospital Intake System - Design Memo
+
+I used a binary tree to represent the hospital’s doctor reporting structure because each doctor can have a left child and a right child. This makes it possible to show how doctors are connected in the hierarchy. The insert method looks for the specified parent and adds the new doctor to the requested side if that position is available. If the parent cannot be found or the side is invalid, the method returns False instead of changing the tree.
+
+The three traversals let the hospital view the doctor hierarchy in different orders. Preorder visits the current doctor first, followed by the left and right children. Inorder visits the left child, current doctor, and right child. Postorder visits both children before the current doctor. Each traversal follows a different order, which can be useful depending on how the hierarchy needs to be reviewed or processed.
+
+I used a min-heap for the emergency queue because the patient with the lowest urgency number needs to be treated first. The root holds the most urgent patient so peek can check who is next without removing them. When a patient is added heapify_up restores the heap property. When the highest-priority patient is removed heapify_down restores it. I tested different situations, including an empty queue, one patient, duplicate urgency scores, invalid urgency values, and removal order, to check that the queue works as expected.
